@@ -146,6 +146,10 @@ namespace neural {
 
         void load_config(bool load_bvh_and_network);
 
+        size_t get_neural_bvh_memory_usage() const;
+
+        size_t get_overall_size() const;
+
     private:
         CudaSceneData learning_scene_data();
 
@@ -181,6 +185,7 @@ namespace neural {
         ///// Acceleration Related /////
 
         void reinitialise_neural_bvh_learning_states();
+
 
         void build_and_upload_neural_bvh();
         void split_neural_bvh_at(const std::vector<uint32_t> &split_neural_node_indices);

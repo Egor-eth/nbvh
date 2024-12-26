@@ -440,6 +440,13 @@ namespace neural {
         }
     }
 
+    size_t NeuralBVHRenderer::get_neural_bvh_memory_usage() const
+    {
+        assert(m_neural_bvh_nodes.d_ptr);
+
+        return m_neural_bvh_nodes.bytes();
+    }
+
     void NeuralBVHRenderer::reinitialise_neural_bvh_learning_states()
     {
         assert(m_neural_bvh_nodes.d_ptr);

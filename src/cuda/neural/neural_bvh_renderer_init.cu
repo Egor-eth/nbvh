@@ -621,6 +621,17 @@ namespace neural {
         glfwSetWindowSize(m_backend->get_display().glfw_window(), w, h);
     }
 
+    size_t NeuralBVHRenderer::get_overall_size() const
+    {
+        size_t nn_size = m_neural_module->get_neural_model_size();
+        size_t nbvh_size = m_bvh_stats.n_original_byte_size();
+        for(int i = 0; i < NUM_BVH_LODS; ++i) {
+            nbvh_size += m_bvh_stats.n_byte_size(i);
+        }
+
+        return nn_size + nbvh_size;
+    }
+
     void NeuralBVHRenderer::load_config(bool load_bvh_and_network)
     {
         const std::string base_config_name    = std::string(m_base_config_name);

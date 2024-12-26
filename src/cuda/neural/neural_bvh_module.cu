@@ -115,6 +115,11 @@ namespace neural {
         reinitialise_inference_data_module(fb_size);
     }
 
+    size_t NeuralBVHModule::get_neural_model_size() const
+    {
+        return 2ull * m_model->network->n_params();
+    }
+
     void NeuralBVHModule::reinitialise_neural_model(uint32_t batch_size)
     {
         // Call child module to update anything related to output (loss and output dims ususally)

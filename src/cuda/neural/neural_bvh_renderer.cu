@@ -374,6 +374,7 @@ namespace neural {
                     if(!patched::args.inference_mode) {
                         save_config(true);
                     }
+                    std::cout << static_cast<float>(get_overall_size()) * 1e-6 << "MB" << std::endl;
                     m_inference_timer.write_last_to_stream(std::cout, m_max_accumulated_spp);
                     m_train_callback();
                 }

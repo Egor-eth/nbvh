@@ -176,6 +176,8 @@ namespace neural {
                                                   bool m_show_tree_cut_depth,
                                                   uint32_t m_neural_tree_cut_max_depth);
 
+        size_t get_neural_model_size() const;
+
     protected:
         // Optimizer
         OptimizerOptions m_optimizer_options;
