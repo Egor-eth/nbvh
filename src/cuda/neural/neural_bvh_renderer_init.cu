@@ -621,7 +621,7 @@ namespace neural {
         glfwSetWindowSize(m_backend->get_display().glfw_window(), w, h);
     }
 
-    size_t NeuralBVHRenderer::get_overall_size() const
+    size_t NeuralBVHRenderer::get_overall_size()
     {
         size_t nn_size = m_neural_module->get_neural_model_size();
         size_t nbvh_size = m_bvh_stats.n_original_byte_size();

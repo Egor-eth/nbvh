@@ -146,9 +146,7 @@ namespace neural {
 
         void load_config(bool load_bvh_and_network);
 
-        size_t get_neural_bvh_memory_usage() const;
-
-        size_t get_overall_size() const;
+        size_t get_overall_size();
 
     private:
         CudaSceneData learning_scene_data();
