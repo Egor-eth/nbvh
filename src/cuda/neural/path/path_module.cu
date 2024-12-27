@@ -1,5 +1,5 @@
 
-
+#include "utils/args.h"
 #include "cuda/neural/neural_bvh_module_kernels.cuh"
 #include "cuda/neural/neural_bvh_renderer_kernels.cuh"
 
