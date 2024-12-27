@@ -23,9 +23,8 @@ namespace patched {
         bool use_nbvh_params = false;
         int nbvh_param[3]; //res n_levels log2_hashmap_size
 
-        int max_path = -1;
         bool inference_mode = false;
-
+        bool lambert = false;
     };
 
     extern AArgs args;

@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
     }
     /*patch begin*/
     int c;
-    while((c = getopt(argc, argv, "e:n:o:c:s:r:t:i")) != -1) {
+    while((c = getopt(argc, argv, "e:n:o:c:s:r:t:il")) != -1) {
         switch(c) {
         case 'o':
             args.output_file.emplace(optarg);
@@ -103,6 +103,9 @@ int main(int argc, char *argv[])
             break;
         case 'e':
             args.envmap_file.emplace(optarg);
+            break;
+        case 'l':
+            args.lambert = true;
             break;
         case '?':
             std::cerr << "Unknown argument." << std::endl; 

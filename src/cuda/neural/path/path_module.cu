@@ -350,8 +350,12 @@ namespace neural::path {
     {
         switch (m_path_module_const.output_mode) {
         case OutputMode::NeuralPathTracing:
-            neural_direct_light(accumulated_spp, sample_offset, neural_bvh);
-            //neural_path_tracing(accumulated_spp, sample_offset, neural_bvh);
+            if(patched::args.lambert) {
+                neural_direct_light(accumulated_spp, sample_offset, neural_bvh);
+            }
+            else {
+                neural_path_tracing(accumulated_spp, sample_offset, neural_bvh);
+            }
             break;
         default:
             UNREACHABLE();
