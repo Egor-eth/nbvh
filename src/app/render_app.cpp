@@ -143,11 +143,19 @@ void RenderApp::save_framebuffer(std::string filename) const
     std::filesystem::create_directory(result_dir);
 
     if (filename.ends_with(".png")) {
-        unsigned char *pixels = reinterpret_cast<unsigned char *>(display->ldr_readback_framebuffer().data());
-        render_backend->readback_framebuffer(display->ldr_readback_framebuffer().size() * sizeof(uint32_t), pixels);
+        //unsigned char *pixels = reinterpret_cast<unsigned char *>(display->ldr_readback_framebuffer().data());
+        //render_backend->readback_framebuffer(display->ldr_readback_framebuffer().size() * sizeof(uint32_t), pixels);
 
+        unsigned char *pixels = new unsigned char[4*display->window_size().x*display->window_size().y];
+        render_backend->readback_framebuffer_float(display->hdr_readback_framebuffer().size() * sizeof(float),
+                                                   display->hdr_readback_framebuffer().data());
+        for (int i=0;i<4*display->window_size().x*display->window_size().y;i++)
+          pixels[i] = std::min<float>(std::max<float>(255*display->hdr_readback_framebuffer().data()[i],0),255);
+        
         logger(LogLevel::Info, "Saving framebuffer to %s...", filename.c_str());
         write_png(filename.c_str(), display->window_size().x, display->window_size().y, 4, pixels);
+
+        delete pixels;
     } else {
         if (!filename.ends_with(".exr")) {
             logger(LogLevel::Warn, "No extension set, using .exr");
