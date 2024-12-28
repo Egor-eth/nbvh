@@ -34,10 +34,11 @@ public:
     void write_last_to_stream(std::ostream &str, int spp)
     {
         double time = 0.0f;
-        for(int i = frame_times.size() - spp; i < frame_times.size(); ++i) {
+        for(int i = frame_times.size() - spp + 1; i < frame_times.size(); ++i) {
+            //printf("frame %d: time %f\n", i, frame_times[i]);
             time += frame_times[i];
         }
-        str << "Time: " << time << "ms" << std::endl;
+        str << "time_ms:r = " << time << "}" << std::endl;
     }
 
     void write_to_file(std::string filename, std::vector<float> *losses = nullptr)
