@@ -367,6 +367,11 @@ void RenderApp::run()
     neural::NeuralBVHRenderer *nrenderer =
                                     (neural::NeuralBVHRenderer *)renderers[active_renderer_variant];
 
+    if(patched::args.use_nbvh_params) {
+        //std::cout << "Set params" << std::endl ;
+        nrenderer->set_nbvh_params(patched::args.nbvh_param, patched::args.inference_mode);
+    }
+
     if(patched::args.inference_mode) {
         nrenderer->load_config(true);
     }
@@ -391,10 +396,6 @@ void RenderApp::run()
 
     if(patched::args.spp > 0) {
        nrenderer->set_max_spp(patched::args.spp);
-    }
-    if(patched::args.use_nbvh_params) {
-        //std::cout << "Set params" << std::endl ;
-        nrenderer->set_nbvh_params(patched::args.nbvh_param);
     }
     if(patched::args.envmap_file) {
         nrenderer->set_envmap(*patched::args.envmap_file);

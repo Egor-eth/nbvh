@@ -411,17 +411,25 @@ namespace neural {
         }
     }
 
-    void NeuralBVHRenderer::set_nbvh_params(int params[3])
+    void NeuralBVHRenderer::set_nbvh_params(int params[3], bool is_inference)
     {
         auto &opts = m_neural_module->m_segment_direction_hashgrid_options;
         opts.base_resolution = params[0];
         opts.n_levels = params[1];
         opts.log2_hashmap_size = params[2];
 
+        auto &opts2 = m_neural_module->m_segment_points_hashgrid_options;
+        opts2.base_resolution = params[0];
+        opts2.n_levels = params[1];
+        opts2.log2_hashmap_size = params[2];
+
         std::cout << opts.base_resolution << " " << opts.n_levels << " " << opts.log2_hashmap_size << std::endl;
 
+        if (!is_inference)
+        {
         m_reset_inference_data = true;
         m_reset_learning_data  = true;
+        }
 
     }
 

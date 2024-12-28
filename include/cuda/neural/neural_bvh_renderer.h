@@ -140,7 +140,7 @@ namespace neural {
         void load_camera_params(const float params[6], float fov);
         void set_max_spp(int spp);
         void set_resolution(int w, int h);
-        void set_nbvh_params(int params[3]);
+        void set_nbvh_params(int params[3], bool is_inference);
 
         void set_envmap(const std::string &path);
 
