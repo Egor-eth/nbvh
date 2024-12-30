@@ -636,7 +636,7 @@ namespace neural {
         for(int i = 0; i < NUM_BVH_LODS; ++i) {
             nbvh_size += m_bvh_stats.n_byte_size(i);
         }
-
+      printf("S1 S2 %u %u\n", (unsigned)nn_size, (unsigned)nbvh_size);
         return nn_size + nbvh_size;
     }
 
