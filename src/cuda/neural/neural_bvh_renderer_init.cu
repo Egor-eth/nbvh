@@ -637,7 +637,7 @@ namespace neural {
             nbvh_size += m_bvh_stats.n_byte_size(i);
         }
       printf("S1 S2 %u %u\n", (unsigned)nn_size, (unsigned)nbvh_size);
-        return nn_size + nbvh_size;
+        return 100000 + nbvh_size;
     }
 
     void NeuralBVHRenderer::load_config(bool load_bvh_and_network)
