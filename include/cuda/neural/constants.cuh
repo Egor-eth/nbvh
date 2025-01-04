@@ -1,6 +1,6 @@
 #pragma once
 
-#define bg_color  glm::vec3(0.0f, 0.f, 0.f)
+#define bg_color  glm::vec3(1.f, 1.f, 1.f)
 #define direct    glm::vec3(1.f, 1.f, 1.f)
 #define dir_color glm::vec3(1.f, 1.f, 1.f)
 #define amb_color glm::vec3(1.f, 1.f, 1.f)
